@@ -47,10 +47,6 @@ Section2:NewButton("EquidAllTools", "SB_Noob", function()
 end)
 
 Section2:NewButton("Crash Server", "SB_Noob", function()
-	delay(10,function()
-		game:GetService("TeleportService"):Teleport(game.PlaceId, game:GetService("Players").LocalPlayer)
-	end)
-	
 	for i,v in pairs(game.Players:GetDescendants()) do
 		if v:IsA("RemoteEvent") and v.Parent.Name ~= "dash" then
 			v:FireServer("Z")
