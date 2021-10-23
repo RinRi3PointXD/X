@@ -21,7 +21,7 @@ Section:NewSlider("Money", "how much money do you want", 10000000, 0, function(s
 	wantmoneys = s
 end)
 
-Section:NewButton("Open Buy Hiki Gui By Xionisz Pixel 38 minutes", "XD", function()
+Section:NewButton("Open Buy Hiki Gui", "XD", function()
 	for i,v in pairs(workspace.haki:GetChildren()) do
 		if v:IsA("ClickDetector") then
 			fireclickdetector(v)
