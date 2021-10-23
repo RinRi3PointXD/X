@@ -1,0 +1,72 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+
+local colors = {
+	SchemeColor = Color3.fromRGB(100, 255, 100),
+	Background = Color3.fromRGB(0, 0, 0),
+	Header = Color3.fromRGB(0, 0, 0),
+	TextColor = Color3.fromRGB(255,255,255),
+	ElementColor = Color3.fromRGB(20, 20, 20)
+}
+
+local Window = Library.CreateLib("SB_Gamer", colors)
+local Tab = Window:NewTab("Main")
+local Tab2 = Window:NewTab("Settings")
+
+local Section = Tab:NewSection("Main")
+local Section2 = Tab:NewSection("Misc")
+
+local wantmoneys = 0
+
+Section:NewSlider("Money", "how much money do you want", 10000000, 0, function(s) -- 500 (MaxValue) | 0 (MinValue)
+	wantmoneys = s
+end)
+
+Section:NewButton("Open Buy Hiki Gui By Xionisz Pixel 38 minutes", "XD", function()
+	for i,v in pairs(workspace.haki:GetChildren()) do
+		if v:IsA("ClickDetector") then
+			fireclickdetector(v)
+		end
+	end
+end)
+
+Section:NewButton("GiveMoney", "SB_Noob", function()
+	local args = {
+		[1] = "Woodplank",
+		[2] = -wantmoneys
+	}
+
+	game:GetService("ReplicatedStorage").BuyShip:FireServer(unpack(args))
+end)
+
+Section2:NewButton("EquidAllTools", "SB_Noob", function()
+	for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
+		if v:IsA("Tool") then
+			v.Parent = game:GetService("Players").LocalPlayer.Character
+		end
+	end
+end)
+
+Section2:NewButton("Crash Server", "SB_Noob", function()
+	delay(10,function()
+		game:GetService("TeleportService"):Teleport(game.PlaceId, game:GetService("Players").LocalPlayer)
+	end)
+	
+	for i,v in pairs(game.Players:GetDescendants()) do
+		if v:IsA("RemoteEvent") and v.Parent.Name ~= "dash" then
+			v:FireServer("Z")
+			v:FireServer("X")
+			v:FireServer("C")
+			v:FireServer("V")
+			v:FireServer("E")
+			v:FireServer("R")
+			v:FireServer("T")
+			v:FireServer()
+		end
+	end
+end)
+
+local Section3 = Tab2:NewSection("Settings")
+
+Section3:NewKeybind("Keybind", "KeybindInfo", Enum.KeyCode.LeftControl, function()
+	Library:ToggleUI()
+end)
